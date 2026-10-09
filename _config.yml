@@ -1,0 +1,10 @@
+title: Bharath Dasireddy
+description: Notes from running Kubernetes, GPU inference and AI platforms in production.
+author: Bharath Dasireddy
+theme: minima
+url: "https://bhaddre.github.io"
+permalink: /:year/:month/:title/
+minima:
+  social_links:
+    linkedin: bharathdasireddy
+    github: Bhaddre
