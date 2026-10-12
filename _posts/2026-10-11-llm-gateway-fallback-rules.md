@@ -9,7 +9,7 @@ Everybody wants "if Vertex is down, fail over to Bedrock." Sounds easy. Add a fa
 
 Then a single team blows through its quota, gets a wall of 429s, and the gateway happily reroutes all of it to the backup provider. Now two providers are getting hammered instead of one, and the team that caused it never even noticed because their calls "worked."
 
-I run the gateway for our agents at Calix. 150+ production agents go through it, Vertex AI primary, Bedrock as fallback, LiteLLM in the middle. Most of what I've learned is about when *not* to fall back.
+I run the LLM gateway at my day job. 150+ production agents go through it, Vertex AI primary, Bedrock as fallback, LiteLLM in the middle. Most of what I've learned is about when *not* to fall back.
 
 ## the basic setup
 
