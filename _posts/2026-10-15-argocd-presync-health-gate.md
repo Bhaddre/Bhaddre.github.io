@@ -50,6 +50,7 @@ Second, and the bigger one: waves only order things inside a single sync of the 
 
 The fix was a PreSync hook. Small Python job that runs before every sync of an app. It reads the Argo `Application` objects for whatever that app depends on, checks their health, checks for critical alerts in the app's own namespace, and exits non-zero if anything looks bad. Non-zero PreSync hook means the sync fails and nothing gets applied.
 
+{% raw %}
 ```python
 #!/usr/bin/env python3
 # presync gate: refuse to roll out if what we depend on is unhealthy
@@ -108,6 +109,7 @@ def main():
 if __name__ == "__main__":
     sys.exit(main())
 ```
+{% endraw %}
 
 And the hook in each app's manifests. The golden path template shipped this by default so teams only had to fill in `DEPENDS_ON`:
 

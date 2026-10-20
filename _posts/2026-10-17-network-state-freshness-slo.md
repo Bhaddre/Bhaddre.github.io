@@ -51,6 +51,7 @@ Two things in there that matter. Stamp after readback, not after apply. And stam
 
 Staleness is `now - that gauge`. The SLI is the fraction of time staleness stays under a bound. We used a couple of minutes, pick yours off what the consumers can actually tolerate, not off what the controller usually does.
 
+{% raw %}
 ```yaml
 groups:
   - name: netstate-freshness
@@ -86,6 +87,7 @@ groups:
         labels:
           severity: page
 ```
+{% endraw %}
 
 Heads up on the `absent()` rule. If the controller dies outright, Prometheus marks the series stale after a few minutes and it drops out of every expression above. `avg_over_time` happily averages the samples that exist and reports everything fine. So the freshness alert goes quiet exactly when things are worst. `absent()` with `by (cluster)` doesn't do what you'd want either, you can't be absent per label value you never saw. We ended up with one absent rule per cluster, generated from the cluster list. Ugly. Required.
 
